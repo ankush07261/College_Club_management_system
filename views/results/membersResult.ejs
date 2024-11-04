@@ -1,0 +1,60 @@
+<%- include("../partials/header.ejs") %>
+<h1>Here's what you are looking for:</h1>
+<br/>
+<h2><%= tableName %></h2>
+<div class="result">
+  
+  <% if (result && result.length > 0) { %>
+  <table>
+    <thead>
+      <tr>
+        <% Object.keys(result[0]).forEach(key => { %>
+        <th><%= key %></th>
+        
+        <% }); %>
+      </tr>
+    </thead>
+    <tbody>
+      <% result.forEach(row => { %>
+      <tr>
+        <% Object.values(row).forEach(value => { %>
+        <td><%= value %></td>
+        <% }); %>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <% } if(!result) { %>
+  <% } %>
+  <div class="container">
+    <div class="visible" id="addForm">
+      <form action="/members" method="post">
+        <h3>Add data here using stored procedure</h3>
+        <label for="MEMBER_ID">Member ID:</label>
+        <input type="text" name="MEMBER_ID"/><br/><br/>
+        <label for="FNAME">First name:</label>
+        <input type="text" name="FNAME"/><br/><br/>
+        <label for="LNAME">Last name:</label>
+        <input type="text" name="LNAME"/><br/><br/>
+        <label for="EMAIL">Email:</label>
+        <input type="text" name="EMAIL"/><br/><br/>
+        <label for="MEMBER_PHONE">Contact number:</label>
+        <input type="text" name="MEMBER_PHONE"/><br/><br/>
+        <label for="SEMESTER">Semester:</label>
+        <input type="text" name="SEMESTER"/><br/><br/>
+        <button type="submit">Add</button>
+      </form>
+    </div>
+    <div class="visible">
+      <form action="/members" method="post"> <!-- Corrected action -->
+        <h3>You may delete data here:</h3>
+        <label for="MEMBER_ID">Enter Member ID:</label> <!-- Corrected for attribute -->
+        <input type="text" name="MEMBER_ID"/>
+        <button class="deleteBtn" type="submit">Delete</button>
+      </form>
+    </div>
+  </div>
+  <br /><br />
+</div>
+
+<%- include("../partials/footer.ejs") %>

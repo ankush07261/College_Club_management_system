@@ -1,0 +1,53 @@
+<%- include("../partials/header.ejs") %>
+<h1>Here's what you are looking for:</h1>
+<br />
+<h2>Clubs data</h2>
+<div class="result">
+  <% if (result && result.length > 0) { %>
+  <table>
+    <thead>
+      <tr>
+        <% Object.keys(result[0]).forEach(key => { %>
+        <th><%= key %></th>
+        <% }); %>
+      </tr>
+    </thead>
+    <tbody>
+      <% result.forEach(row => { %>
+      <tr>
+        <% Object.values(row).forEach(value => { %>
+        <td><%= value %></td>
+        <% }); %>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <% } %>
+</div>
+
+<div class="container">
+  <div class="visible" id="addForm">
+    <form action="/club" method="post">
+      <h3>Add data here</h3>
+      <label for="club_id">Club ID:</label>
+      <input type="text" name="club_id" /><br /><br />
+      <label for="club_name">Club name:</label>
+      <input type="text" name="club_name" /><br /><br />
+      <label for="club_memberCount">No. of members:</label>
+      <input type="text" name="club_memberCount" /><br /><br />
+      <button type="submit">Add</button>
+    </form>
+  </div>
+
+  <div class="visible">
+    <form action="/club" id="deleteForm" method="post">
+      <h3>You may delete data here:</h3>
+      <label for="club_id">Enter Club ID:</label>
+      <input type="text" name="club_id" />
+      <button class="deleteBtn" type="submit">Delete</button>
+    </form>
+  </div>
+</div>
+
+<br /><br />
+<%- include("../partials/footer.ejs") %>

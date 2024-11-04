@@ -1,0 +1,83 @@
+<%- include("partials/header.ejs") -%>
+<div class="homebg page"></div>
+<h1>Manage your college clubs here.</h1>
+
+<div class="manage-container">
+  <div class="btn-container">
+    <form action="/club" method="get">
+      <button
+        name="btn"
+        class="inp-btn"
+        type="submit"
+      >
+        Clubs
+      </button>
+    </form>
+    <form action="/accounts">
+      <button
+        name="btn"
+        class="inp-btn"
+        type="submit"
+      >
+        Accounts
+      </button>
+    </form>
+    <form action="/club_events">
+      <button
+        name="btn"
+        class="inp-btn"
+        type="submit"
+      >
+        club Events
+      </button>
+    </form>
+    <form action="/club_heads">
+      <button
+        name="btn"
+        class="inp-btn"
+        type="submit"
+      >
+        Club Heads
+      </button>
+    </form>
+    <form action="/logistics">
+      <button
+        name="btn"
+        class="inp-btn"
+        type="submit"
+      >
+        Logistics
+      </button>
+    </form>
+    <form action="/member_clubs">
+      <button
+        name="btn"
+        class="inp-btn"
+        type="submit"
+      >
+        Member Clubs
+      </button>
+    </form>
+    <form action="/members">
+      <button
+        name="btn"
+        class="inp-btn"
+        type="submit"
+      >
+      Members
+      </button>
+    </form>
+  </div>
+  <br />
+
+  <h3>- OR -</h3>
+
+<form action="/home" method="POST"> 
+  <label for="query">Enter SQL Query:</label><br />
+  <textarea name="query" id="query" rows="5" cols="50"></textarea><br />
+  <button type="submit">Execute</button>
+</form>
+
+</div>
+
+<%- include("partials/footer.ejs") -%>

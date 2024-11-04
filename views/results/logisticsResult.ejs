@@ -1,0 +1,52 @@
+<%- include("../partials/header.ejs") %>
+<h1>Here's what you are looking for:</h1>
+<br/>
+<h2>Logistics</h2>
+<div class="result">
+  
+  <% if (result && result.length > 0) { %>
+  <table>
+    <thead>
+      <tr>
+        <% Object.keys(result[0]).forEach(key => { %>
+        <th><%= key %></th>
+        
+        <% }); %>
+      </tr>
+    </thead>
+    <tbody>
+      <% result.forEach(row => { %>
+      <tr>
+        <% Object.values(row).forEach(value => { %>
+        <td><%= value %></td>
+        <% }); %>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <% } if(!result){} %>
+  <p></p>
+  <div class="container">
+    <div class="visible" id="addForm">
+      <form action="/logistics" method="post">
+        <h3>Add data here</h3>
+        <label for="EVENT_ID">Event ID:</label>
+        <input type="text" name="EVENT_ID"/><br/><br/>
+        <label for="FUNDS_AVAILABLE">Funds:</label>
+        <input type="text" name="FUNDS_AVAILABLE"/><br/><br/>
+        <button type="submit">Add</button>
+      </form>
+    </div>
+    <div class="visible">
+      <form action="/logistics" method="post"> <!-- Changed action -->
+        <h3>You may delete data here:</h3>
+        <label for="EVENT_ID">Enter Event ID:</label> <!-- Changed for attribute -->
+        <input type="text" name="EVENT_ID"/>
+        <button class="deleteBtn" type="submit">Delete</button>
+      </form>
+    </div>
+  </div>
+  <br /><br />
+</div>
+
+<%- include("../partials/footer.ejs") %>

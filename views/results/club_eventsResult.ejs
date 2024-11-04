@@ -1,0 +1,62 @@
+<%- include("../partials/header.ejs") %>
+<h1>Here's what you are looking for:</h1>
+<br/>
+<h2>Club Events Details</h2>
+<div class="result">
+  
+  <% if (result && result.length > 0) { %>
+  <table>
+    <thead>
+      <tr>
+        <% Object.keys(result[0]).forEach(key => { %>
+        <th><%= key %></th>
+        
+        <% }); %>
+      </tr>
+    </thead>
+    <tbody>
+      <% result.forEach(row => { %>
+      <tr>
+        <% Object.values(row).forEach(value => { %>
+        <td><%= value %></td>
+        <% }); %>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <% } if(!result){}%>
+  <div class="container">
+    <div class="visible" id="addForm">
+      <form action="/club_events" method="post">
+        <h3>Add data here</h3>
+        <label for="EVENT_ID">Event ID:</label>
+        <input type="text" name="EVENT_ID"/><br/><br/>
+        <label for="EVENT_NAME">Event name:</label>
+        <input type="text" name="EVENT_NAME"/><br/><br/>
+        <label for="CLUB_ID">Club ID:</label>
+        <input type="text" name="CLUB_ID"/><br/><br/>
+        <label for="EVENT_DATE">Event date:</label>
+        <input type="text" name="EVENT_DATE"/><br/><br/>
+        <label for="EVENT_TIME">Event time:</label>
+        <input type="text" name="EVENT_TIME"/><br/><br/>
+        <label for="PLACE">Venue:</label>
+        <input type="text" name="PLACE"/><br/><br/>
+        <label for="DESCRIPTIONS">Descriptions:</label>
+        <input type="text" name="DESCRIPTIONS"/><br/><br/>
+        <label for="PARTICIPATION_COUNT">Participation count:</label>
+        <input type="text" name="PARTICIPATION_COUNT"/><br/><br/>
+        <button type="submit">Add</button>
+      </form>
+    </div>
+    <div class="visible">
+      <form action="/club_events" method="post"> <!-- Changed action -->
+        <h3>You may delete data here:</h3>
+        <label for="EVENT_ID">Event ID:</label>
+        <input type="text" name="EVENT_ID"/>
+        <button class="deleteBtn" type="submit">Delete</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include("../partials/footer.ejs") %>

@@ -1,0 +1,10 @@
+<%- include("partials/header.ejs") %>
+
+<form action="/custom-query" method="POST">
+  <label for="query">Enter SQL Query:</label><br />
+  <textarea name="query" id="query" rows="5" cols="50" required></textarea
+  ><br />
+  <button type="submit">Execute</button>
+</form>
+
+<%- include("partials/footer.ejs") %>

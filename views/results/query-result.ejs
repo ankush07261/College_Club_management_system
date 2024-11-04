@@ -1,0 +1,32 @@
+<%- include("../partials/header.ejs") %>
+<h1>Executed successfully</h1>
+<br/>
+<div class="result">
+  
+  <% if (result && result.length > 0) { %>
+  <table>
+    <thead>
+      <tr>
+        <% Object.keys(result[0]).forEach(key => { %>
+        <th><%= key %></th>
+        
+        <% }); %>
+      </tr>
+    </thead>
+    <tbody>
+      <% result.forEach(row => { %>
+      <tr>
+        <% Object.values(row).forEach(value => { %>
+        <td><%= value %></td>
+        <% }); %>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <% } if(!result) %>
+  <p></p>
+
+  <br /><br />
+</div>
+
+<%- include("../partials/footer.ejs") %>
